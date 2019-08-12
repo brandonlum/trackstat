@@ -34,13 +34,13 @@
 
 
 
-* {
+/* * {
   border: 1px solid gold;
-}
+} */
 
 header {
   display: flex;
   align-content: space-between;
-  
+
 
 }
