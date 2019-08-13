@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Navbar, NavItem, NavLink} from 'reactstrap'
+import {Navbar} from 'reactstrap'
 import classnames from 'classnames'
 import {Link} from 'react-router-dom'
 
@@ -21,17 +21,17 @@ class Nav extends Component {
         return (
             <React.Fragment>
                 <Navbar>
-                    <NavLink className={classnames({active: this.state.activeTab === '1'})}>
-                        <Link to='/profile'>Profile</Link>
-                    </NavLink>
+                    <Link className={classnames({active: this.state.activeTab === '1'})} to='/profile'>
+                        Profile
+                    </Link>
 
-                    <NavLink className={classnames({active: this.state.activeTab === '2'})}>
-                        <Link to='/scorecards'>Scorecards</Link>  
-                    </NavLink>
+                    <Link className={classnames({active: this.state.activeTab === '2'})} to='/scorecards'>
+                        Scorecards
+                    </Link>
 
-                    <NavLink className={classnames({active: this.state.activeTab === '3'})}>
-                        <Link to='/newscorecard'>Create new Scorecard</Link>
-                    </NavLink>
+                    <Link className={classnames({active: this.state.activeTab === '3'})} to='/newscorecard'>
+                        Create new Scorecard
+                    </Link>
                 </Navbar>
                 {/* <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">

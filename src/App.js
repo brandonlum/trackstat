@@ -19,6 +19,43 @@ class App extends React.Component {
     .catch(error => console.error(error))
   }
 
+  addScorecard = (scorecard) => {
+    const copyScorecards = [...this.state.scorecards]
+    copyScorecards.unshift(scorecard)
+    this.setState({
+      scorecards: copyScorecards
+    })
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+  }
+
+  handleSubmit = (event, formInputs) => {
+    event.preventDefault();
+    // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
+    // this.state.total_par = this.state.front_par + this.state.back_par;
+    fetch('/scorecards', {
+        method: "POST",
+        body: JSON.stringify({formInputs}),
+        headers: {
+            'Accept':'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(resJson => {
+        this.setState({
+          scorecards: [resJson, ...this.state.scorecards]
+        })
+        // this.props.addScorecard(resJson)
+    })
+    .catch(error => console.error(error))
+}
+
+
   componentDidMount = () => {
     this.getScorecards()
   }
@@ -32,7 +69,13 @@ class App extends React.Component {
           {/* <Route path="/profile" exact component={Profile} /> */}
           <Route path="/scorecards"
           render = {(props) => <Scorecards {...props} scorecards={this.state.scorecards}/>} />
-          <Route path="/newscorecard" exact component={CreateScorecard} />
+          {/* <Route path="/newscorecard" 
+          render = {(props) => <CreateScorecard {...props} addScorecard={this.addScorecard}/>} /> */}
+
+          <Route path="/newscorecard" 
+          render = {(props) => <CreateScorecard {...props} handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          />} />
         </Router>
         
       </div>
