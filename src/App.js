@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
 import Scorecards from './components/Scorecards.js'
@@ -26,11 +27,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Nav />
-        <Scorecards 
-          scorecards={this.state.scorecards}
-        />
-        {/* <CreateScorecard /> */}
+        <Router>
+          <Nav />
+          {/* <Route path="/profile" exact component={Profile} /> */}
+          <Route path="/scorecards"
+          render = {(props) => <Scorecards {...props} scorecards={this.state.scorecards}/>} />
+          <Route path="/newscorecard" exact component={CreateScorecard} />
+        </Router>
+        
       </div>
     );
   }
