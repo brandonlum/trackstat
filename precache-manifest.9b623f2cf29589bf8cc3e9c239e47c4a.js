@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4ce49a5ed1bef1976b042cee4bb1de1a",
+    "revision": "59a66b664c38c19a0683655ad46a6fe2",
     "url": "/trackstat-client/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/trackstat-client/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "e1f0c48a629a054b00db",
+    "revision": "01b9a7bb7fd4202e29d5",
     "url": "/trackstat-client/static/css/main.67e25121.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/trackstat-client/static/js/2.1dcd044d.chunk.js"
   },
   {
-    "revision": "e1f0c48a629a054b00db",
-    "url": "/trackstat-client/static/js/main.c2fcceaa.chunk.js"
+    "revision": "01b9a7bb7fd4202e29d5",
+    "url": "/trackstat-client/static/js/main.21ebacc1.chunk.js"
   },
   {
     "revision": "8efa725bf6107027ebe6",
