@@ -21,15 +21,15 @@ class Nav extends Component {
         return (
             <React.Fragment>
                 <Navbar>
-                    <Link className={classnames({active: this.state.activeTab === '1'})} to='/profile'>
+                    <Link className={classnames({active: this.state.activeTab === '1'})} to='/trackstat-client/profile'>
                         Profile
                     </Link>
 
-                    <Link className={classnames({active: this.state.activeTab === '2'})} to='/scorecards'>
+                    <Link className={classnames({active: this.state.activeTab === '2'})} to='/trackstat-client/scorecards'>
                         Scorecards
                     </Link>
 
-                    <Link className={classnames({active: this.state.activeTab === '3'})} to='/scorecardform'>
+                    <Link className={classnames({active: this.state.activeTab === '3'})} to='/trackstat-client/scorecardform'>
                         Scorecard Form
                     </Link>
                 </Navbar>

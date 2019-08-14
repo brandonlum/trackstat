@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BASE_URL} from './constants.js'
+// import {BASE_URL} from './constants.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
@@ -19,7 +19,7 @@ class App extends React.Component {
 
   getUser = (event, userLogin) => {
     event.preventDefault();
-    fetch(BASE_URL+`/users/${userLogin.id}`, {
+    fetch(`trackstat-client/users/${userLogin.id}`, {
       method: "GET",
       body: JSON.stringify(userLogin),
       header: {
@@ -35,7 +35,7 @@ class App extends React.Component {
   handleLogin = (event, userLogin) => {
     event.preventDefault();
     console.log('Handle Login', userLogin)
-    fetch(BASE_URL+`/users/login`, {
+    fetch(`trackstat-client/users/login`, {
       method: "POST",
       body: JSON.stringify(userLogin),
       headers: {
@@ -59,7 +59,7 @@ class App extends React.Component {
   }
 
   getScorecards = () => {
-    fetch(BASE_URL+`/scorecards`)
+    fetch(`trackstat-client/scorecards`)
     .then(response => response.json())
     // .then(resJson => console.log(resJson))
     .then(resJson => this.setState({scorecards: resJson}))
@@ -84,7 +84,7 @@ class App extends React.Component {
     event.preventDefault();
     // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
     // this.state.total_par = this.state.front_par + this.state.back_par;
-    fetch(BASE_URL+`/scorecards`, {
+    fetch(`trackstat-client/scorecards`, {
         method: "POST",
         body: JSON.stringify({formInputs}),
         headers: {
@@ -106,7 +106,7 @@ class App extends React.Component {
     event.preventDefault();
     // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
     // this.state.total_par = this.state.front_par + this.state.back_par;
-    fetch(BASE_URL+`/scorecards/${formInputs.id}`, {
+    fetch(`trackstat-client/scorecards/${formInputs.id}`, {
         method: "PUT",
         body: JSON.stringify({formInputs}),
         headers: {
@@ -119,7 +119,7 @@ class App extends React.Component {
   }
 
   handleDelete = (deletedScorecard) => {
-    fetch(BASE_URL+`/scorecards/${deletedScorecard.id}`, {
+    fetch(`trackstat-client/scorecards/${deletedScorecard.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -152,7 +152,7 @@ class App extends React.Component {
         <Router>
           <Nav />
           {/* <Route path="/profile" exact component={Profile} /> */}
-          <Route path="/scorecards"
+          <Route path="trackstat-client/scorecards"
           render = {(props) => 
             <Scorecards 
               {...props} 
@@ -164,7 +164,7 @@ class App extends React.Component {
           {/* <Route path="/newscorecard" 
           render = {(props) => <CreateScorecard {...props} addScorecard={this.addScorecard}/>} /> */}
 
-          <Route path="/scorecardform" 
+          <Route path="trackstat-client/scorecardform" 
           render = {(props) => <ScorecardForm {...props} handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           />} />
