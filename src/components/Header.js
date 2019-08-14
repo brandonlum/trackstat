@@ -7,12 +7,12 @@ class Header extends Component {
         return (
             <Container className="border-bottom">
                 <Row>
-                    <Col xs="8">
+                    <Col xs="7">
                         <Button color="light" href="/">
                             <h1>ScoreTracker</h1>Track all your scoring in one convenient location!
                         </Button>
                     </Col>
-                    <Col xs="4">
+                    <Col xs="5">
                         <Login
                             handleLogin={this.props.handleLogin}
                         />

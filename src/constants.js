@@ -1,4 +1,4 @@
-// const BASE_URL = <your heroku URL></your>
+// const BASE_URL = "https://trackstat.herokuapp.com"
 const BASE_URL = "http://localhost:3000"
 
 

@@ -29,8 +29,8 @@ class Nav extends Component {
                         Scorecards
                     </Link>
 
-                    <Link className={classnames({active: this.state.activeTab === '3'})} to='/newscorecard'>
-                        Create new Scorecard
+                    <Link className={classnames({active: this.state.activeTab === '3'})} to='/scorecardform'>
+                        Scorecard Form
                     </Link>
                 </Navbar>
                 {/* <TabContent activeTab={this.state.activeTab}>

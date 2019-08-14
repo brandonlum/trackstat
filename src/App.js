@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+// import {BASE_URL} from './constants.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
 import Scorecards from './components/Scorecards.js'
-import CreateScorecard from './components/CreateScorecard.js'
+import ScorecardForm from './components/ScorecardForm.js'
 
 class App extends React.Component {
   state = {
@@ -16,8 +17,16 @@ class App extends React.Component {
     }
   }
 
-  getUser = () => {
-    fetch('/users')
+  getUser = (event, userLogin) => {
+    event.preventDefault();
+    fetch(`/users/${userLogin.id}`, {
+      method: "GET",
+      body: JSON.stringify(userLogin),
+      header: {
+        'Accept':'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
     .then(response => response.json())
     .then(resJson => console.log(resJson))
     .catch(error => console.error(error))
@@ -25,27 +34,32 @@ class App extends React.Component {
 
   handleLogin = (event, userLogin) => {
     event.preventDefault();
-    console.log(userLogin)
-    // fetch('/users/login', {
-    //   method: "POST",
-    //   body: JSON.stringify({userLogin}),
-    //   headers: {
-    //     'Accept':'application/json, text/plain, */*',
-    //     'Content-Type': 'application/json'
-    //   }
+    console.log('Handle Login', userLogin)
+    fetch(`/users/login`, {
+      method: "POST",
+      body: JSON.stringify(userLogin),
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => console.log(response))
+    .then(resJson => console.log('User Info', resJson))
+    // .then(resJson => {
+    //   this.setState({
+    //     userLogin: {
+    //       username: '',
+    //       password: '',
+    //       token: ''
+    //      }
+    //     // token: resJson.token
+    //   })
     // })
-    // .then(response => response.json())
-    // .then(resJson => console.log(resJson))
-    // // .then(resJson => {
-    // //   this.setState({
-    // //     token: resJson.token
-    // //   })
-    // // })
-    // .catch(error => console.error(error))
+    .catch(error => console.error(error))
   }
 
   getScorecards = () => {
-    fetch('/scorecards')
+    fetch(`/scorecards`)
     .then(response => response.json())
     // .then(resJson => console.log(resJson))
     .then(resJson => this.setState({scorecards: resJson}))
@@ -70,7 +84,7 @@ class App extends React.Component {
     event.preventDefault();
     // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
     // this.state.total_par = this.state.front_par + this.state.back_par;
-    fetch('/scorecards', {
+    fetch(`/scorecards`, {
         method: "POST",
         body: JSON.stringify({formInputs}),
         headers: {
@@ -86,7 +100,42 @@ class App extends React.Component {
         // this.props.addScorecard(resJson)
     })
     .catch(error => console.error(error))
-}
+  }
+
+  handleUpdate = (event, formInputs) => {
+    event.preventDefault();
+    // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
+    // this.state.total_par = this.state.front_par + this.state.back_par;
+    fetch(`/scorecards/${formInputs.id}`, {
+        method: "PUT",
+        body: JSON.stringify({formInputs}),
+        headers: {
+            'Accept':'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(updateScorecard => this.getScorecards())
+    .catch(error => console.error(error))
+  }
+
+  handleDelete = (deletedScorecard) => {
+    fetch(`/scorecards/${deletedScorecard.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(json => {
+      this.setState(state => {
+        const scorecards = state.scorecards.filter((scorecard, index) => scorecard.id !== deletedScorecard.id)
+        return {
+          scorecards
+        }
+      })
+    })
+    .catch(error => console.error(error))
+  }
 
 
   componentDidMount = () => {
@@ -104,12 +153,19 @@ class App extends React.Component {
           <Nav />
           {/* <Route path="/profile" exact component={Profile} /> */}
           <Route path="/scorecards"
-          render = {(props) => <Scorecards {...props} scorecards={this.state.scorecards}/>} />
+          render = {(props) => 
+            <Scorecards 
+              {...props} 
+              scorecards={this.state.scorecards}
+              handleDelete={this.handleDelete}
+              handleUpdate={this.handleUpdate}
+            />} 
+          />
           {/* <Route path="/newscorecard" 
           render = {(props) => <CreateScorecard {...props} addScorecard={this.addScorecard}/>} /> */}
 
-          <Route path="/newscorecard" 
-          render = {(props) => <CreateScorecard {...props} handleSubmit={this.handleSubmit}
+          <Route path="/scorecardform" 
+          render = {(props) => <ScorecardForm {...props} handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           />} />
         </Router>
