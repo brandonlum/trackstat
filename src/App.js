@@ -8,7 +8,40 @@ import CreateScorecard from './components/CreateScorecard.js'
 
 class App extends React.Component {
   state = {
-    scorecards: []
+    scorecards: [],
+    userLogin: {
+      username: '',
+      password: '',
+      token: ''
+    }
+  }
+
+  getUser = () => {
+    fetch('/users')
+    .then(response => response.json())
+    .then(resJson => console.log(resJson))
+    .catch(error => console.error(error))
+  }
+
+  handleLogin = (event, userLogin) => {
+    event.preventDefault();
+    console.log(userLogin)
+    // fetch('/users/login', {
+    //   method: "POST",
+    //   body: JSON.stringify({userLogin}),
+    //   headers: {
+    //     'Accept':'application/json, text/plain, */*',
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then(resJson => console.log(resJson))
+    // // .then(resJson => {
+    // //   this.setState({
+    // //     token: resJson.token
+    // //   })
+    // // })
+    // .catch(error => console.error(error))
   }
 
   getScorecards = () => {
@@ -63,7 +96,10 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <Header />
+        
+        <Header 
+          handleLogin={this.handleLogin}
+        />
         <Router>
           <Nav />
           {/* <Route path="/profile" exact component={Profile} /> */}
