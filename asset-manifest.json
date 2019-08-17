@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/trackstat-client/static/css/main.67e25121.chunk.css",
-    "main.js": "/trackstat-client/static/js/main.69bcdf7a.chunk.js",
-    "main.js.map": "/trackstat-client/static/js/main.69bcdf7a.chunk.js.map",
+    "main.css": "/trackstat-client/static/css/main.ec78b54a.chunk.css",
+    "main.js": "/trackstat-client/static/js/main.646b70a4.chunk.js",
+    "main.js.map": "/trackstat-client/static/js/main.646b70a4.chunk.js.map",
     "runtime~main.js": "/trackstat-client/static/js/runtime~main.f27e20bb.js",
     "runtime~main.js.map": "/trackstat-client/static/js/runtime~main.f27e20bb.js.map",
     "static/css/2.266e55a5.chunk.css": "/trackstat-client/static/css/2.266e55a5.chunk.css",
-    "static/js/2.8bc1d9a2.chunk.js": "/trackstat-client/static/js/2.8bc1d9a2.chunk.js",
-    "static/js/2.8bc1d9a2.chunk.js.map": "/trackstat-client/static/js/2.8bc1d9a2.chunk.js.map",
+    "static/js/2.4bcb8b63.chunk.js": "/trackstat-client/static/js/2.4bcb8b63.chunk.js",
+    "static/js/2.4bcb8b63.chunk.js.map": "/trackstat-client/static/js/2.4bcb8b63.chunk.js.map",
     "index.html": "/trackstat-client/index.html",
-    "precache-manifest.7017d5674da8a4ce4b02b23de1553a0d.js": "/trackstat-client/precache-manifest.7017d5674da8a4ce4b02b23de1553a0d.js",
+    "precache-manifest.3070b3240a22226f79b79f4d434f809e.js": "/trackstat-client/precache-manifest.3070b3240a22226f79b79f4d434f809e.js",
     "service-worker.js": "/trackstat-client/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/trackstat-client/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.67e25121.chunk.css.map": "/trackstat-client/static/css/main.67e25121.chunk.css.map"
+    "static/css/main.ec78b54a.chunk.css.map": "/trackstat-client/static/css/main.ec78b54a.chunk.css.map"
   }
 }
