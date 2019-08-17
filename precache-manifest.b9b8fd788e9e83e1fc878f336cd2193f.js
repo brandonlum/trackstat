@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4eebd82d9a719a1fd5d5a59d335415ed",
+    "revision": "b96b2d992669a42adaaa5cc25ab2b3ab",
     "url": "/trackstat-client/index.html"
   },
   {
-    "revision": "86581a8a7b8a3ab1be12",
+    "revision": "6c48ffbba406bc16a303",
     "url": "/trackstat-client/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "9ede930341e3e6c83521",
+    "revision": "5c31027bc05620a5a44c",
     "url": "/trackstat-client/static/css/main.ec78b54a.chunk.css"
   },
   {
-    "revision": "86581a8a7b8a3ab1be12",
-    "url": "/trackstat-client/static/js/2.4bcb8b63.chunk.js"
+    "revision": "6c48ffbba406bc16a303",
+    "url": "/trackstat-client/static/js/2.dd363d46.chunk.js"
   },
   {
-    "revision": "9ede930341e3e6c83521",
-    "url": "/trackstat-client/static/js/main.8765eb9a.chunk.js"
+    "revision": "5c31027bc05620a5a44c",
+    "url": "/trackstat-client/static/js/main.35b628bb.chunk.js"
   },
   {
     "revision": "8efa725bf6107027ebe6",
