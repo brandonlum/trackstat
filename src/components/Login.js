@@ -16,7 +16,7 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`/trackstat-client/users/login`, {
+        fetch(`/users/login`, {
             method: "POST",
             body: JSON.stringify(
                 {

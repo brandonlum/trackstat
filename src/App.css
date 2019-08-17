@@ -42,5 +42,18 @@ header {
   display: flex;
   align-content: space-between;
 
+}
+
+.body {
+  background-color: rgba(238, 238, 238, 0.48) !important;
+  background-image: url("https://barbadosgolfclub.com/wp-content/uploads/barbados-golf-course.jpg");
+  background-blend-mode: color;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
 
 }
+
+/* .container {
+  height: 500px;
+} */

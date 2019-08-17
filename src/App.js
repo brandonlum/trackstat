@@ -17,7 +17,7 @@ class App extends React.Component {
 
   getUser = (userLogin) => {
     // event.preventDefault();
-    fetch(`/trackstat-client/users/${userLogin.user.id}`, {
+    fetch(`/users/${userLogin.user.id}`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${userLogin.token}`
@@ -36,7 +36,7 @@ class App extends React.Component {
 
 
   getScorecards = () => {
-    fetch(`/trackstat-client/users/${this.state.userInfo.id}/scorecards`)
+    fetch(`/users/${this.state.userInfo.id}/scorecards`)
     .then(response => response.json())
     // .then(resJson => console.log('Adding scorecard info', resJson))
     .then(resJson => this.setState({scorecards: resJson}))
@@ -60,7 +60,7 @@ class App extends React.Component {
   handleSubmit = (event, formInputs) => {
     event.preventDefault();
     console.log('Form Inputs: ', formInputs);
-    fetch(`/trackstat-client/users/${this.state.userInfo.id}/scorecards`, {
+    fetch(`/users/${this.state.userInfo.id}/scorecards`, {
         method: "POST",
         body: JSON.stringify(formInputs),
         headers: {
@@ -81,7 +81,7 @@ class App extends React.Component {
 
   handleUpdate = (event, formInputs) => {
     event.preventDefault();
-    fetch(`/trackstat-client/users/${this.state.userInfo.id}/scorecards/${formInputs.id}`, {
+    fetch(`/users/${this.state.userInfo.id}/scorecards/${formInputs.id}`, {
         method: "PUT",
         body: JSON.stringify({formInputs}),
         headers: {
@@ -94,7 +94,7 @@ class App extends React.Component {
   }
 
   handleDelete = (deletedScorecard) => {
-    fetch(`/trackstat-client/scorecards/${deletedScorecard.id}`, {
+    fetch(`/scorecards/${deletedScorecard.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -113,14 +113,13 @@ class App extends React.Component {
   }
 
 
-  // componentDidMount = () => {
-  //   this.getScorecards()
-  // }
+  componentDidMount = () => {
+    this.getScorecards()
+  }
 
   render () {
     return (
-      <div className="dusty-grass-gradient">
-        
+      <div className="body">
         <Header 
           handleLogin={this.handleLogin}
           getUser={this.getUser}
@@ -129,41 +128,48 @@ class App extends React.Component {
           <Nav 
             userInfo={this.state.userInfo}
             
-            scorecards={this.state.scorecards}
-            handleDelete={this.handleDelete}
-            handleUpdate={this.handleUpdate}
-            handleSubmit={this.handleSubmit}
-            handleChange={this.handleChange}
+            // scorecards={this.state.scorecards}
+            // handleDelete={this.handleDelete}
+            // handleUpdate={this.handleUpdate}
+            // handleSubmit={this.handleSubmit}
+            // handleChange={this.handleChange}
           />
+          {this.state.userinfo? 
           <Container>
-            <Route path="/profile"
-              render = {(props) => 
-              <Profile 
-                {...props} 
+          <Route path="/profile"
+            render = {(props) => 
+            <Profile 
+              {...props} 
+              userInfo={this.state.userInfo}
+              handleUpdate={this.handleUpdate}
+            />} 
+          />
+          <Route path="/scorecards"
+            render = {(props) => 
+              <Scorecards 
+                {...props}
                 userInfo={this.state.userInfo}
+                scorecards={this.state.scorecards}
+                handleDelete={this.handleDelete}
                 handleUpdate={this.handleUpdate}
               />} 
-            />
-            <Route path="/scorecards"
-              render = {(props) => 
-                <Scorecards 
-                  {...props}
-                  userInfo={this.state.userInfo}
-                  scorecards={this.state.scorecards}
-                  handleDelete={this.handleDelete}
-                  handleUpdate={this.handleUpdate}
-                />} 
-            />
+          />
 
-            <Route path="/scorecardform" 
-              render = {(props) => 
-              <ScorecardForm {...props} 
-                userInfo={this.state.userInfo}
-                handleSubmit={this.handleSubmit}
-                handleChange={this.handleChange}
-              />} 
-            />
-          </Container>
+          <Route path="/scorecardform" 
+            render = {(props) => 
+            <ScorecardForm {...props} 
+              userInfo={this.state.userInfo}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+            />} 
+          />
+        </Container>:
+        <Container>
+          <h3>Welcome! Please Sign In!</h3> 
+        </Container>
+        
+      }
+          
           
         </Router>
         

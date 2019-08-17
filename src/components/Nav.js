@@ -23,7 +23,7 @@ class Nav extends Component {
         return (
             <React.Fragment>
                 <Navbar className="container">
-                    <HashRouter basename='/trackstat-client'>
+                    {/* <HashRouter basename='/trackstat-client'> */}
                         <Link className={classnames({active: this.state.activeTab === '1'})} to='/profile'>
                             Profile
                         </Link>
@@ -62,7 +62,7 @@ class Nav extends Component {
                                 handleChange={this.handleChange}
                             />} 
                         /> */}
-                    </HashRouter>
+                    {/* </HashRouter> */}
                 </Navbar>
                 {/* <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">
