@@ -113,9 +113,9 @@ class App extends React.Component {
   }
 
 
-  componentDidMount = () => {
-    this.getScorecards()
-  }
+  // componentDidMount = () => {
+  //   this.getScorecards()
+  // }
 
   render () {
     return (
@@ -128,6 +128,12 @@ class App extends React.Component {
         <Router>
           <Nav 
             userInfo={this.state.userInfo}
+            
+            scorecards={this.state.scorecards}
+            handleDelete={this.handleDelete}
+            handleUpdate={this.handleUpdate}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
           />
           <Container>
             <Route path="/profile"
