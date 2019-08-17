@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/trackstat-client/static/css/main.ec78b54a.chunk.css",
-    "main.js": "/trackstat-client/static/js/main.d133d495.chunk.js",
-    "main.js.map": "/trackstat-client/static/js/main.d133d495.chunk.js.map",
+    "main.js": "/trackstat-client/static/js/main.8765eb9a.chunk.js",
+    "main.js.map": "/trackstat-client/static/js/main.8765eb9a.chunk.js.map",
     "runtime~main.js": "/trackstat-client/static/js/runtime~main.f27e20bb.js",
     "runtime~main.js.map": "/trackstat-client/static/js/runtime~main.f27e20bb.js.map",
     "static/css/2.266e55a5.chunk.css": "/trackstat-client/static/css/2.266e55a5.chunk.css",
     "static/js/2.4bcb8b63.chunk.js": "/trackstat-client/static/js/2.4bcb8b63.chunk.js",
     "static/js/2.4bcb8b63.chunk.js.map": "/trackstat-client/static/js/2.4bcb8b63.chunk.js.map",
     "index.html": "/trackstat-client/index.html",
-    "precache-manifest.9298e14d51ea72b5f4f7fd0cfb04ce48.js": "/trackstat-client/precache-manifest.9298e14d51ea72b5f4f7fd0cfb04ce48.js",
+    "precache-manifest.fa6298ceaa29fd6b021a755f82e0bb12.js": "/trackstat-client/precache-manifest.fa6298ceaa29fd6b021a755f82e0bb12.js",
     "service-worker.js": "/trackstat-client/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/trackstat-client/static/css/2.266e55a5.chunk.css.map",
     "static/css/main.ec78b54a.chunk.css.map": "/trackstat-client/static/css/main.ec78b54a.chunk.css.map"
