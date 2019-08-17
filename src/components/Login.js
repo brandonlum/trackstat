@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {BASE_URL} from '../constants.js'
 // import {Redirect} from 'react-router-dom'
 import {Container, Form, Input, Card, CardBody, Row, Col} from 'reactstrap'
 
@@ -16,7 +17,7 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`/users/login`, {
+        fetch(BASE_URL+`/users/login`, {
             method: "POST",
             body: JSON.stringify(
                 {
