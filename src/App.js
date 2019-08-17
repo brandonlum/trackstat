@@ -17,7 +17,7 @@ class App extends React.Component {
 
   getUser = (userLogin) => {
     // event.preventDefault();
-    fetch(`/users/${userLogin.user.id}`, {
+    fetch(`/trackstat-client/users/${userLogin.user.id}`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${userLogin.token}`
@@ -34,34 +34,9 @@ class App extends React.Component {
     .catch(error => console.error(error))
   }
 
-  // handleLogin = (event, userLogin) => {
-  //   event.preventDefault();
-  //   console.log('Handle Login', userLogin)
-  //   fetch(`/users/login`, {
-  //     method: "POST",
-  //     body: JSON.stringify(userLogin),
-  //     headers: {
-  //       'Accept': 'application/json, text/plain, */*',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then(response => console.log(response))
-  //   .then(resJson => console.log('User Info', resJson))
-  //   // .then(resJson => {
-  //   //   this.setState({
-  //   //     userLogin: {
-  //   //       username: '',
-  //   //       password: '',
-  //   //       token: ''
-  //   //      }
-  //   //     // token: resJson.token
-  //   //   })
-  //   // })
-  //   .catch(error => console.error(error))
-  // }
 
   getScorecards = () => {
-    fetch(`/users/${this.state.userInfo.id}/scorecards`)
+    fetch(`/trackstat-client/users/${this.state.userInfo.id}/scorecards`)
     .then(response => response.json())
     // .then(resJson => console.log('Adding scorecard info', resJson))
     .then(resJson => this.setState({scorecards: resJson}))
@@ -85,7 +60,7 @@ class App extends React.Component {
   handleSubmit = (event, formInputs) => {
     event.preventDefault();
     console.log('Form Inputs: ', formInputs);
-    fetch(`/users/${this.state.userInfo.id}/scorecards`, {
+    fetch(`/trackstat-client/users/${this.state.userInfo.id}/scorecards`, {
         method: "POST",
         body: JSON.stringify(formInputs),
         headers: {
@@ -106,7 +81,7 @@ class App extends React.Component {
 
   handleUpdate = (event, formInputs) => {
     event.preventDefault();
-    fetch(`/users/${this.state.userInfo.id}/scorecards/${formInputs.id}`, {
+    fetch(`/trackstat-client/users/${this.state.userInfo.id}/scorecards/${formInputs.id}`, {
         method: "PUT",
         body: JSON.stringify({formInputs}),
         headers: {
@@ -119,7 +94,7 @@ class App extends React.Component {
   }
 
   handleDelete = (deletedScorecard) => {
-    fetch(`/scorecards/${deletedScorecard.id}`, {
+    fetch(`/trackstat-client/scorecards/${deletedScorecard.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json, text/plain, */*',

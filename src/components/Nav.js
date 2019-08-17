@@ -22,15 +22,15 @@ class Nav extends Component {
             <React.Fragment>
                 <Navbar className="container">
                     {/* <HashRouter basename='/'> */}
-                        <Link className={classnames({active: this.state.activeTab === '1'})} to='/profile'>
+                        <Link className={classnames({active: this.state.activeTab === '1'})} to='/trackstat-client/profile'>
                             Profile
                         </Link>
 
-                        <Link className={classnames({active: this.state.activeTab === '2'})} to='/scorecards'>
+                        <Link className={classnames({active: this.state.activeTab === '2'})} to='/trackstat-client/scorecards'>
                             Scorecards
                         </Link>
 
-                        <Link className={classnames({active: this.state.activeTab === '3'})} to='/scorecardform'>
+                        <Link className={classnames({active: this.state.activeTab === '3'})} to='/trackstat-client/scorecardform'>
                             Scorecard Form
                         </Link>
                     {/* </HashRouter> */}
