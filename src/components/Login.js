@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 // import {Redirect} from 'react-router-dom'
-import {Container, Form, Input, Card, Row, Col} from 'reactstrap'
+import {Container, Form, Input, Card, CardBody, Row, Col} from 'reactstrap'
 
 
 class Login extends Component {
@@ -43,6 +43,13 @@ class Login extends Component {
           .catch(error => console.error(error))
     }
 
+    handleLogout = (event) => {
+        event.preventDefault()
+        this.setState({
+            userInfo: {}
+        })
+    }
+
 
 
     render() {
@@ -51,42 +58,68 @@ class Login extends Component {
         return (
             <Container>
                 <Card>
-                    <Form onSubmit={this.handleSubmit}>
-                        <Row>
-                            <Col className="p-0">
-                                <Input
-                                    className="text-center"
-                                    name="username"
-                                    placeholder="Username"
-                                    type="text"
-                                    onChange={this.handleChange}
-                                />
-                            </Col>
-                            <Col className="p-0">
-                                <Input
-                                    className="text-center"
-                                    placeholder="Password"
-                                    name="password"
-                                    type="password"
-                                    onChange={this.handleChange}
-                                />
-                            </Col>
-                        </Row>
-                        <Row>
+                    {/* {this.props.userInfo?  */}
+                        <Form onSubmit={this.handleSubmit}>
+                            <Row>
+                                <Col className="p-0">
+                                    <Input
+                                        className="text-center"
+                                        name="username"
+                                        placeholder="Username"
+                                        type="text"
+                                        onChange={this.handleChange}
+                                    />
+                                </Col>
+                                <Col className="p-0">
+                                    <Input
+                                        className="text-center"
+                                        placeholder="Password"
+                                        name="password"
+                                        type="password"
+                                        onChange={this.handleChange}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className="p-0">
+                                    <Input
+                                        value="Login"
+                                        type="submit"
+                                    />
+                                </Col>
+                            </Row>
+                        </Form>
+                        {/* :
+                        <CardBody>
+                            <Row>
+                                <Col>
+                                    {this.props.userInfo.name} 
+                                </Col>
+                                <Col>
+                                    {this.props.userInfo.status}
+                                </Col>
+                            </Row>
+                            <Form onSubmit={this.handleLogout}>
+                                <Row>
+                                    <Input
+                                        value="Logout"
+                                        type="submit"
+                                    />
+                                </Row>
+                            </Form>
+                        </CardBody> 
+                        
+
+                    } */}
+                    <Row>
+                        <Col className="p-0">
                             <Input
-                                value="Login"
+                                value="Register"
                                 type="submit"
                             />
-                        </Row>
-                        
-                        
-                    </Form>
-                    <Row>
-                        <Input
-                            value="Register"
-                            type="submit"
-                        />
+                        </Col>
                     </Row>
+                    
                 </Card>
                 {/* {redirect && (
                     <Redirect to={from || `/user/{#this.state.id}`} />

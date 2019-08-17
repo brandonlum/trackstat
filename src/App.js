@@ -120,58 +120,63 @@ class App extends React.Component {
   render () {
     return (
       <div className="body">
-        <Header 
-          handleLogin={this.handleLogin}
-          getUser={this.getUser}
-        />
-        <Router>
-          <Nav 
+        <Container className="mt-2 mb-2">
+          <Header
+            handleLogin={this.handleLogin}
+            getUser={this.getUser}
             userInfo={this.state.userInfo}
-            
-            // scorecards={this.state.scorecards}
-            // handleDelete={this.handleDelete}
-            // handleUpdate={this.handleUpdate}
-            // handleSubmit={this.handleSubmit}
-            // handleChange={this.handleChange}
           />
-          {this.state.userinfo? 
-          <Container>
-          <Route path="/profile"
-            render = {(props) => 
-            <Profile 
-              {...props} 
+          <Router>
+            <Nav 
               userInfo={this.state.userInfo}
-              handleUpdate={this.handleUpdate}
-            />} 
-          />
-          <Route path="/scorecards"
-            render = {(props) => 
-              <Scorecards 
-                {...props}
-                userInfo={this.state.userInfo}
-                scorecards={this.state.scorecards}
-                handleDelete={this.handleDelete}
-                handleUpdate={this.handleUpdate}
-              />} 
-          />
+              
+              // scorecards={this.state.scorecards}
+              // handleDelete={this.handleDelete}
+              // handleUpdate={this.handleUpdate}
+              // handleSubmit={this.handleSubmit}
+              // handleChange={this.handleChange}
+            />
+            {/* {this.state.userinfo ?  */}
+              <Container>
+                <Route path="/profile"
+                  render = {(props) => 
+                  <Profile 
+                    {...props} 
+                    userInfo={this.state.userInfo}
+                    handleUpdate={this.handleUpdate}
+                  />} 
+                />
+                <Route path="/scorecards"
+                  render = {(props) => 
+                    <Scorecards 
+                      {...props}
+                      userInfo={this.state.userInfo}
+                      scorecards={this.state.scorecards}
+                      handleDelete={this.handleDelete}
+                      handleUpdate={this.handleUpdate}
+                    />} 
+                />
 
-          <Route path="/scorecardform" 
-            render = {(props) => 
-            <ScorecardForm {...props} 
-              userInfo={this.state.userInfo}
-              handleSubmit={this.handleSubmit}
-              handleChange={this.handleChange}
-            />} 
-          />
-        </Container>:
-        <Container>
-          <h3>Welcome! Please Sign In!</h3> 
+                <Route path="/scorecardform" 
+                  render = {(props) => 
+                  <ScorecardForm {...props} 
+                    userInfo={this.state.userInfo}
+                    handleSubmit={this.handleSubmit}
+                    handleChange={this.handleChange}
+                  />} 
+                />
+              </Container>
+              {/* :
+              <Container>
+                <h3>Welcome! Please Sign In!</h3> 
+              </Container>
+          
+            } */}
+            
+            
+          </Router>
         </Container>
         
-      }
-          
-          
-        </Router>
         
       </div>
     );

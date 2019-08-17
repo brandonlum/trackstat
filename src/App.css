@@ -50,8 +50,8 @@ header {
   background-blend-mode: color;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 500px;
-
+  height: 1000px;
+  overflow: scroll;
 }
 
 /* .container {
