@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-// import {BASE_URL} from './constants.js'
+import {BASE_URL} from './constants.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
@@ -17,7 +17,7 @@ class App extends React.Component {
 
   getUser = (userLogin) => {
     // event.preventDefault();
-    fetch(`/users/${userLogin.user.id}`, {
+    fetch(BASE_URL+`/users/${userLogin.user.id}`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${userLogin.token}`
@@ -36,7 +36,7 @@ class App extends React.Component {
 
 
   getScorecards = () => {
-    fetch(`/users/${this.state.userInfo.id}/scorecards`)
+    fetch(BASE_URL+`/users/${this.state.userInfo.id}/scorecards`)
     .then(response => response.json())
     // .then(resJson => console.log('Adding scorecard info', resJson))
     .then(resJson => this.setState({scorecards: resJson}))
@@ -60,7 +60,7 @@ class App extends React.Component {
   handleSubmit = (event, formInputs) => {
     event.preventDefault();
     console.log('Form Inputs: ', formInputs);
-    fetch(`/users/${this.state.userInfo.id}/scorecards`, {
+    fetch(BASE_URL+`/users/${this.state.userInfo.id}/scorecards`, {
         method: "POST",
         body: JSON.stringify(formInputs),
         headers: {
@@ -81,7 +81,7 @@ class App extends React.Component {
 
   handleUpdate = (event, formInputs) => {
     event.preventDefault();
-    fetch(`/users/${this.state.userInfo.id}/scorecards/${formInputs.id}`, {
+    fetch(BASE_URL+`/users/${this.state.userInfo.id}/scorecards/${formInputs.id}`, {
         method: "PUT",
         body: JSON.stringify({formInputs}),
         headers: {
@@ -94,7 +94,7 @@ class App extends React.Component {
   }
 
   handleDelete = (deletedScorecard) => {
-    fetch(`/scorecards/${deletedScorecard.id}`, {
+    fetch(BASE_URL+`/scorecards/${deletedScorecard.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -138,7 +138,7 @@ class App extends React.Component {
             />
             {/* {this.state.userinfo ?  */}
               <Container>
-                <Route path="/profile"
+                <Route path="/trackstat-client/user/1//profile"
                   render = {(props) => 
                   <Profile 
                     {...props} 
@@ -146,7 +146,7 @@ class App extends React.Component {
                     handleUpdate={this.handleUpdate}
                   />} 
                 />
-                <Route path="/scorecards"
+                <Route path="/trackstat-client/user/1/scorecards"
                   render = {(props) => 
                     <Scorecards 
                       {...props}
@@ -157,7 +157,7 @@ class App extends React.Component {
                     />} 
                 />
 
-                <Route path="/scorecardform" 
+                <Route path="/trackstat-client/user/1/scorecardform" 
                   render = {(props) => 
                   <ScorecardForm {...props} 
                     userInfo={this.state.userInfo}
