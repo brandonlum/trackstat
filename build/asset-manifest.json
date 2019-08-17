@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/trackstat-client/static/css/main.67e25121.chunk.css",
+    "main.js": "/trackstat-client/static/js/main.40f662f6.chunk.js",
+    "main.js.map": "/trackstat-client/static/js/main.40f662f6.chunk.js.map",
+    "runtime~main.js": "/trackstat-client/static/js/runtime~main.f27e20bb.js",
+    "runtime~main.js.map": "/trackstat-client/static/js/runtime~main.f27e20bb.js.map",
+    "static/css/2.266e55a5.chunk.css": "/trackstat-client/static/css/2.266e55a5.chunk.css",
+    "static/js/2.db6a7b19.chunk.js": "/trackstat-client/static/js/2.db6a7b19.chunk.js",
+    "static/js/2.db6a7b19.chunk.js.map": "/trackstat-client/static/js/2.db6a7b19.chunk.js.map",
+    "index.html": "/trackstat-client/index.html",
+    "precache-manifest.de8113dd921821e85c0a65e1a5791483.js": "/trackstat-client/precache-manifest.de8113dd921821e85c0a65e1a5791483.js",
+    "service-worker.js": "/trackstat-client/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/trackstat-client/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.67e25121.chunk.css.map": "/trackstat-client/static/css/main.67e25121.chunk.css.map"
+  }
+}
