@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Navbar} from 'reactstrap'
 import classnames from 'classnames'
-import {Link} from 'react-router-dom'
+import {HashRouter, Link} from 'react-router-dom'
 
 
 class Nav extends Component {
@@ -20,18 +20,20 @@ class Nav extends Component {
     render () {
         return (
             <React.Fragment>
-                <Navbar>
-                    <Link className={classnames({active: this.state.activeTab === '1'})} to='/trackstat-client/profile'>
-                        Profile
-                    </Link>
+                <Navbar className="container">
+                    {/* <HashRouter basename='/'> */}
+                        <Link className={classnames({active: this.state.activeTab === '1'})} to='/profile'>
+                            Profile
+                        </Link>
 
-                    <Link className={classnames({active: this.state.activeTab === '2'})} to='/trackstat-client/scorecards'>
-                        Scorecards
-                    </Link>
+                        <Link className={classnames({active: this.state.activeTab === '2'})} to='/scorecards'>
+                            Scorecards
+                        </Link>
 
-                    <Link className={classnames({active: this.state.activeTab === '3'})} to='/trackstat-client/scorecardform'>
-                        Scorecard Form
-                    </Link>
+                        <Link className={classnames({active: this.state.activeTab === '3'})} to='/scorecardform'>
+                            Scorecard Form
+                        </Link>
+                    {/* </HashRouter> */}
                 </Navbar>
                 {/* <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">

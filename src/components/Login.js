@@ -7,12 +7,8 @@ class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-            id: '',
             username: '',
-            password: '',
-            token: ''
-            // ,
-            // redirect: false
+            password: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,17 +16,31 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const user = {
-            username: this.state.username,
-            password: this.state.password
-        }
-        console.log('User from Loginjs',user)
-        console.log('Props User', this.props.user)
-        if (this.props.user) user.id = this.props.user.id
-        this.props.handleLogin(
-            event,
-            user
-        )
+        fetch(`/users/login`, {
+            method: "POST",
+            body: JSON.stringify(
+                {
+                    user: {
+                        username: this.state.username,
+                        password: this.state.password
+                    }
+                } 
+            ),
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(resJson => {
+              this.setState({
+                  username: '',
+                  password: ''
+              })
+              this.props.getUser(resJson)
+              console.log('User logged in')
+          })
+          .catch(error => console.error(error))
     }
 
 

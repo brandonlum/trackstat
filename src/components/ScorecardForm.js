@@ -19,6 +19,21 @@ class ScorecardForm extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    componentDidMount = () => {
+        if (this.props.scorecard) {
+          this.setState({
+            course_name: this.props.scorecard.course_name,
+            date_played: this.props.scorecard.date_played,
+            front_par: this.props.scorecard.front_par,
+            back_par: this.props.scorecard.back_par,
+            total_par: this.props.scorecard.total_par,
+            front_nine_score: this.props.scorecard.front_nine_score,
+            back_nine_score: this.props.scorecard.back_nine_score,
+            combined_score: this.props.scorecard.combined_score
+          })
+        }
+      }
     
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
@@ -27,71 +42,32 @@ class ScorecardForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        console.log(this.props.userInfo);
+        let total_par = (Number(this.state.front_par) + Number(this.state.back_par)).toString()
+        let combined_score = (Number(this.state.front_nine_score) + Number(this.state.back_nine_score)).toString()
         const scorecard = {
             course_name: this.state.course_name,
             date_played: this.state.date_played,
             front_par: this.state.front_par,
             back_par: this.state.back_par,
-            total_par: this.state.total_par,
+            total_par: total_par,
             front_nine_score: this.state.front_nine_score,
             back_nine_score: this.state.back_nine_score,
-            combined_score: this.state.combined_score
+            combined_score: combined_score,
+            user_id: this.props.userInfo.id
         }
+
+        console.log('Scorecard', scorecard)
         console.log('Props Scorecard', this.props.scorecard)
-        if (this.props.scorecard) scorecard.id = this.props.scorecard.id
+        if (this.props.scorecard) {
+            scorecard.id = this.props.scorecard.id
+            this.props.toggleForm();
+        }
         this.props.handleSubmit(
             event,
             scorecard
         )
     }
-
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     console.log(this.state.course_name, this.state.date_played,this.state.front_par,
-    //     this.state.back_par,
-    //     this.state.total_par,
-    //     this.state.front_nine_score,
-    //     this.state.back_nine_score,
-    //     this.state.combined_score)
-    // }
-
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
-    //     // this.state.total_par = this.state.front_par + this.state.back_par;
-    //     fetch('/scorecards', {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             course_name: this.state.course_name,
-    //             date_played: this.state.date_dplayed,
-    //             front_par: this.state.front_par,
-    //             back_par: this.state.back_par,
-    //             total_par: this.state.total_par,
-    //             front_nine_score: this.state.front_nine_score,
-    //             back_nine_score: this.state.back_nine_score,
-    //             combined_score: this.state.combined_score
-    //         }),
-    //         headers: {
-    //             'Accept':'application/json, text/plain, */*',
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then(response => response.json())
-    //     .then(resJson => {
-    //         this.setState({
-    //             course_name: '',
-    //             date_played: '',
-    //             front_par: 0,
-    //             back_par: 0,
-    //             total_par: 0,
-    //             front_nine_score: 0,
-    //             back_nine_score: 0,
-    //             combined_score: 0
-    //         })
-    //         this.props.addScorecard(resJson)
-    //     })
-    //     .catch(error => console.error(error))
-    // }
 
 
     render () {

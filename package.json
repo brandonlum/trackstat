@@ -2,7 +2,7 @@
   "name": "trackstat-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://trackstat.herokuapp.com",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",

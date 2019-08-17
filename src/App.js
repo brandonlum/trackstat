@@ -4,64 +4,66 @@ import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
+import Profile from './components/Profile.js'
 import Scorecards from './components/Scorecards.js'
 import ScorecardForm from './components/ScorecardForm.js'
+import {Container} from 'reactstrap'
 
 class App extends React.Component {
   state = {
     scorecards: [],
-    userLogin: {
-      username: '',
-      password: '',
-      token: ''
-    }
+    userInfo: {}
   }
 
-  getUser = (event, userLogin) => {
-    event.preventDefault();
-    fetch(`trackstat-client/users/${userLogin.id}`, {
+  getUser = (userLogin) => {
+    // event.preventDefault();
+    fetch(`/users/${userLogin.user.id}`, {
       method: "GET",
-      body: JSON.stringify(userLogin),
-      header: {
-        'Accept':'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(resJson => console.log(resJson))
-    .catch(error => console.error(error))
-  }
-
-  handleLogin = (event, userLogin) => {
-    event.preventDefault();
-    console.log('Handle Login', userLogin)
-    fetch(`trackstat-client/users/login`, {
-      method: "POST",
-      body: JSON.stringify(userLogin),
       headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+        'Authorization': `Bearer ${userLogin.token}`
       }
     })
-    .then(response => console.log(response))
-    .then(resJson => console.log('User Info', resJson))
-    // .then(resJson => {
-    //   this.setState({
-    //     userLogin: {
-    //       username: '',
-    //       password: '',
-    //       token: ''
-    //      }
-    //     // token: resJson.token
-    //   })
-    // })
-    .catch(error => console.error(error))
-  }
-
-  getScorecards = () => {
-    fetch(`trackstat-client/scorecards`)
     .then(response => response.json())
     // .then(resJson => console.log(resJson))
+    .then(resJson => {
+      this.setState ({
+        userInfo : resJson
+      })
+      console.log('User: ', resJson.name, 'ID: ', resJson.id)
+    })
+    .catch(error => console.error(error))
+  }
+
+  // handleLogin = (event, userLogin) => {
+  //   event.preventDefault();
+  //   console.log('Handle Login', userLogin)
+  //   fetch(`/users/login`, {
+  //     method: "POST",
+  //     body: JSON.stringify(userLogin),
+  //     headers: {
+  //       'Accept': 'application/json, text/plain, */*',
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then(response => console.log(response))
+  //   .then(resJson => console.log('User Info', resJson))
+  //   // .then(resJson => {
+  //   //   this.setState({
+  //   //     userLogin: {
+  //   //       username: '',
+  //   //       password: '',
+  //   //       token: ''
+  //   //      }
+  //   //     // token: resJson.token
+  //   //   })
+  //   // })
+  //   .catch(error => console.error(error))
+  // }
+
+  getScorecards = () => {
+    fetch(`/users/${this.state.userInfo.id}/scorecards`)
+    .then(response => response.json())
+    // .then(resJson => console.log('Adding scorecard info', resJson))
     .then(resJson => this.setState({scorecards: resJson}))
     .catch(error => console.error(error))
   }
@@ -82,31 +84,29 @@ class App extends React.Component {
 
   handleSubmit = (event, formInputs) => {
     event.preventDefault();
-    // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
-    // this.state.total_par = this.state.front_par + this.state.back_par;
-    fetch(`trackstat-client/scorecards`, {
+    console.log('Form Inputs: ', formInputs);
+    fetch(`/users/${this.state.userInfo.id}/scorecards`, {
         method: "POST",
-        body: JSON.stringify({formInputs}),
+        body: JSON.stringify(formInputs),
         headers: {
             'Accept':'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         }
     })
     .then(response => response.json())
-    .then(resJson => {
-        this.setState({
-          scorecards: [resJson, ...this.state.scorecards]
-        })
-        // this.props.addScorecard(resJson)
-    })
+    .then(resJson => {console.log(resJson)})
+    // .then(resJson => {
+    //     this.setState({
+    //       scorecards: [resJson, ...this.state.scorecards]
+    //     })
+    //     this.props.addScorecard(resJson)
+    // })
     .catch(error => console.error(error))
   }
 
   handleUpdate = (event, formInputs) => {
     event.preventDefault();
-    // this.state.combined_score = this.state.front_nine_score + this.state.back_nine_score;
-    // this.state.total_par = this.state.front_par + this.state.back_par;
-    fetch(`trackstat-client/scorecards/${formInputs.id}`, {
+    fetch(`/users/${this.state.userInfo.id}/scorecards/${formInputs.id}`, {
         method: "PUT",
         body: JSON.stringify({formInputs}),
         headers: {
@@ -114,12 +114,12 @@ class App extends React.Component {
             'Content-Type': 'application/json'
         }
     })
-    .then(updateScorecard => this.getScorecards())
+    .then(updateScorecard => {this.getScorecards()})
     .catch(error => console.error(error))
   }
 
   handleDelete = (deletedScorecard) => {
-    fetch(`trackstat-client/scorecards/${deletedScorecard.id}`, {
+    fetch(`/scorecards/${deletedScorecard.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json, text/plain, */*',
@@ -144,30 +144,46 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
+      <div className="dusty-grass-gradient">
         
         <Header 
           handleLogin={this.handleLogin}
+          getUser={this.getUser}
         />
         <Router>
-          <Nav />
-          {/* <Route path="/profile" exact component={Profile} /> */}
-          <Route path="trackstat-client/scorecards"
-          render = {(props) => 
-            <Scorecards 
-              {...props} 
-              scorecards={this.state.scorecards}
-              handleDelete={this.handleDelete}
-              handleUpdate={this.handleUpdate}
-            />} 
+          <Nav 
+            userInfo={this.state.userInfo}
           />
-          {/* <Route path="/newscorecard" 
-          render = {(props) => <CreateScorecard {...props} addScorecard={this.addScorecard}/>} /> */}
+          <Container>
+            <Route path="/profile"
+              render = {(props) => 
+              <Profile 
+                {...props} 
+                userInfo={this.state.userInfo}
+                handleUpdate={this.handleUpdate}
+              />} 
+            />
+            <Route path="/scorecards"
+              render = {(props) => 
+                <Scorecards 
+                  {...props}
+                  userInfo={this.state.userInfo}
+                  scorecards={this.state.scorecards}
+                  handleDelete={this.handleDelete}
+                  handleUpdate={this.handleUpdate}
+                />} 
+            />
 
-          <Route path="trackstat-client/scorecardform" 
-          render = {(props) => <ScorecardForm {...props} handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          />} />
+            <Route path="/scorecardform" 
+              render = {(props) => 
+              <ScorecardForm {...props} 
+                userInfo={this.state.userInfo}
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />} 
+            />
+          </Container>
+          
         </Router>
         
       </div>
