@@ -27,7 +27,7 @@ class App extends React.Component {
     // .then(resJson => console.log(resJson))
     .then(resJson => {
       this.setState ({
-        userInfo : resJson
+        userInfo: resJson
       })
       console.log('User: ', resJson.name, 'ID: ', resJson.id)
     })
@@ -112,6 +112,14 @@ class App extends React.Component {
     .catch(error => console.error(error))
   }
 
+  handleLogout = (event) => {
+    event.preventDefault();
+    this.setState({
+        userInfo: {}
+    })
+    console.log('User logged out')
+  }
+
 
   componentDidMount = () => {
     this.getScorecards()
@@ -125,6 +133,7 @@ class App extends React.Component {
             handleLogin={this.handleLogin}
             getUser={this.getUser}
             userInfo={this.state.userInfo}
+            handleLogout={this.handleLogout}
           />
           <Router>
             <Nav 

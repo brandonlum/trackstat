@@ -15,7 +15,9 @@ class Header extends Component {
                     <Col xs="4">
                         <Login
                             handleLogin={this.props.handleLogin}
+                            handleLogout={this.props.handleLogout}
                             getUser={this.props.getUser}
+                            userInfo={this.props.userInfo}
                         />
                     </Col>
 
