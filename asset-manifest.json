@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/trackstat-client/static/css/main.ec78b54a.chunk.css",
-    "main.js": "/trackstat-client/static/js/main.35b628bb.chunk.js",
-    "main.js.map": "/trackstat-client/static/js/main.35b628bb.chunk.js.map",
-    "runtime~main.js": "/trackstat-client/static/js/runtime~main.f27e20bb.js",
-    "runtime~main.js.map": "/trackstat-client/static/js/runtime~main.f27e20bb.js.map",
-    "static/css/2.266e55a5.chunk.css": "/trackstat-client/static/css/2.266e55a5.chunk.css",
-    "static/js/2.dd363d46.chunk.js": "/trackstat-client/static/js/2.dd363d46.chunk.js",
-    "static/js/2.dd363d46.chunk.js.map": "/trackstat-client/static/js/2.dd363d46.chunk.js.map",
-    "index.html": "/trackstat-client/index.html",
-    "precache-manifest.b9b8fd788e9e83e1fc878f336cd2193f.js": "/trackstat-client/precache-manifest.b9b8fd788e9e83e1fc878f336cd2193f.js",
-    "service-worker.js": "/trackstat-client/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/trackstat-client/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.ec78b54a.chunk.css.map": "/trackstat-client/static/css/main.ec78b54a.chunk.css.map"
+    "main.css": "/trackstat/static/css/main.ace5c65f.chunk.css",
+    "main.js": "/trackstat/static/js/main.054a78d3.chunk.js",
+    "main.js.map": "/trackstat/static/js/main.054a78d3.chunk.js.map",
+    "runtime~main.js": "/trackstat/static/js/runtime~main.b70d7838.js",
+    "runtime~main.js.map": "/trackstat/static/js/runtime~main.b70d7838.js.map",
+    "static/css/2.266e55a5.chunk.css": "/trackstat/static/css/2.266e55a5.chunk.css",
+    "static/js/2.462fa663.chunk.js": "/trackstat/static/js/2.462fa663.chunk.js",
+    "static/js/2.462fa663.chunk.js.map": "/trackstat/static/js/2.462fa663.chunk.js.map",
+    "index.html": "/trackstat/index.html",
+    "precache-manifest.78d019b3c13952e917d89b74a3b3368c.js": "/trackstat/precache-manifest.78d019b3c13952e917d89b74a3b3368c.js",
+    "service-worker.js": "/trackstat/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/trackstat/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.ace5c65f.chunk.css.map": "/trackstat/static/css/main.ace5c65f.chunk.css.map"
   }
 }
