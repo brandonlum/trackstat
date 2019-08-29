@@ -47,8 +47,6 @@ class Login extends Component {
 
 
     render() {
-        // const {from} = this.props.location.state || '/';
-        // const {redirect} = this.state;
         return (
             <Container>
                 {this.props.userInfo.id? 
@@ -103,28 +101,14 @@ class Login extends Component {
                                 />
                             </Col>
                         </Row>
+                        <Row>
+                            <Col className="p-0">
+                                <a className="btn" href="/register">Register</a>
+                            </Col>
+                        </Row>
                     </Form>
-                    // <Form onSubmit={this.props.handleLogout}>
-                    //     <Row>
-                    //         <Input
-                    //             value="Logout"
-                    //             type="submit"
-                    //         />
-                    //     </Row>
-                    // </Form>
 
                 }
-                <Row>
-                    <Col className="p-0">
-                        <Input
-                            value="Register"
-                            type="submit"
-                        />
-                    </Col>
-                </Row>
-                {/* {redirect && (
-                    <Redirect to={from || `/user/{#this.state.id}`} />
-                )} */}
             </Container>
         );
     }

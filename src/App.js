@@ -4,10 +4,11 @@ import {BASE_URL} from './constants.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header.js'
 import Nav from './components/Nav.js'
+import Login from './components/Login.js'
 import Profile from './components/Profile.js'
 import Scorecards from './components/Scorecards.js'
 import ScorecardForm from './components/ScorecardForm.js'
-import {Container} from 'reactstrap'
+import {Container, Card} from 'reactstrap'
 
 class App extends React.Component {
   state = {
@@ -69,13 +70,13 @@ class App extends React.Component {
         }
     })
     .then(response => response.json())
-    .then(resJson => {console.log(resJson)})
-    // .then(resJson => {
-    //     this.setState({
-    //       scorecards: [resJson, ...this.state.scorecards]
-    //     })
-    //     this.props.addScorecard(resJson)
-    // })
+    // .then(resJson => {console.log(resJson)})
+    .then(resJson => {
+        this.setState({
+          scorecards: [resJson, ...this.state.scorecards]
+        })
+        this.addScorecard(resJson)
+    })
     .catch(error => console.error(error))
   }
 
@@ -135,55 +136,61 @@ class App extends React.Component {
             userInfo={this.state.userInfo}
             handleLogout={this.handleLogout}
           />
-          <Router>
-            <Nav 
-              userInfo={this.state.userInfo}
-              
-              // scorecards={this.state.scorecards}
-              // handleDelete={this.handleDelete}
-              // handleUpdate={this.handleUpdate}
-              // handleSubmit={this.handleSubmit}
-              // handleChange={this.handleChange}
-            />
-            {/* {this.state.userinfo ?  */}
-              <Container>
-                <Route path="/trackstat-client/user/1//profile"
-                  render = {(props) => 
-                  <Profile 
-                    {...props} 
-                    userInfo={this.state.userInfo}
-                    handleUpdate={this.handleUpdate}
-                  />} 
-                />
-                <Route path="/trackstat-client/user/1/scorecards"
-                  render = {(props) => 
-                    <Scorecards 
-                      {...props}
+          {this.state.userInfo.id ? 
+            <Router>
+              <Nav 
+                userInfo={this.state.userInfo}
+                
+                // scorecards={this.state.scorecards}
+                // handleDelete={this.handleDelete}
+                // handleUpdate={this.handleUpdate}
+                // handleSubmit={this.handleSubmit}
+                // handleChange={this.handleChange}
+              />
+                <Container>
+                  <Route path="/trackstat/user/1//profile"
+                    render = {(props) => 
+                    <Profile 
+                      {...props} 
                       userInfo={this.state.userInfo}
-                      scorecards={this.state.scorecards}
-                      handleDelete={this.handleDelete}
                       handleUpdate={this.handleUpdate}
                     />} 
-                />
+                  />
+                  <Route path="/trackstat/user/1/scorecards"
+                    render = {(props) => 
+                      <Scorecards 
+                        {...props}
+                        userInfo={this.state.userInfo}
+                        scorecards={this.state.scorecards}
+                        handleDelete={this.handleDelete}
+                        handleUpdate={this.handleUpdate}
+                      />} 
+                  />
 
-                <Route path="/trackstat-client/user/1/scorecardform" 
-                  render = {(props) => 
-                  <ScorecardForm {...props} 
-                    userInfo={this.state.userInfo}
-                    handleSubmit={this.handleSubmit}
-                    handleChange={this.handleChange}
-                  />} 
+                  <Route path="/trackstat/user/1/scorecardform" 
+                    render = {(props) => 
+                    <ScorecardForm {...props} 
+                      userInfo={this.state.userInfo}
+                      handleSubmit={this.handleSubmit}
+                      handleChange={this.handleChange}
+                    />} 
+                  />
+                </Container>
+              
+            </Router>
+          :
+            <Container id="login-container">
+              <h3>Welcome! Please Sign In!</h3>
+              <Card className="login-card">
+                <Login 
+                  handleLogin={this.handleLogin}
+                  getUser={this.getUser}
+                  userInfo={this.state.userInfo}
+                  handleLogout={this.handleLogout}
                 />
-              </Container>
-              {/* :
-              <Container>
-                <h3>Welcome! Please Sign In!</h3> 
-              </Container>
-          
-            } */}
-            
-            
-          </Router>
+              </Card>
+            </Container>
+          }
         </Container>
         
         

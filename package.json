@@ -40,12 +40,12 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/brandonlum/trackstat-client.git"
+    "url": "https://github.com/brandonlum/trackstat.git"
   },
   "author": "Brandon Lum",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brandonlum/trackstat-client/issues"
+    "url": "https://github.com/brandonlum/trackstat/issues"
   },
-  "homepage": "https://brandonlum.github.io/trackstat-client"
+  "homepage": "https://brandonlum.github.io/trackstat"
 }

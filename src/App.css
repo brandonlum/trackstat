@@ -52,8 +52,29 @@ header {
   background-repeat: no-repeat;
   height: 1000px;
   overflow: scroll;
+  margin: 5 auto;
+  padding: 5;
 }
 
-/* .container {
-  height: 500px;
-} */
+.appname-header {
+  color: black;
+  text-decoration-line: none;
+}
+
+#appname-header-logged-out {
+  text-align: center;
+}
+
+#login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10 auto;
+  
+}
+
+.login-card {
+  justify-content: center;
+  width: 50%;
+  background-color: rgba(238, 238, 238, 0.48) !important;
+}
